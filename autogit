@@ -6,38 +6,32 @@ REPO_NAME=""
 BRANCH_NAME="main"
 FOLDER_NAME=""
 
-# Function to display help menu
+# Function to display help menu and exit
 help_menu() {
-  echo "autogit [options]
-
+  echo "
 Welcome to autogit. This script automatically inits and pushes a GitHub repo. All options are optional. If you just run `autogit` by itself, it will init and push a git repo with the current folder name, and the default branch name, using your set GitHub username
 
   -f <folder_name>: Create a new folder with the specified name and initialize the Git repository inside it.
   -u <github_username>: Set the GitHub username for the remote repository.
   -r <repo_name>: Set the name of the Git repository.
-  -b <branch_name>: Set the initial branch name (default: `main`).
-  -h: Displays this help menu"
+  -b <branch_name>: Set the initial branch name (default: 'main').
+  -h: Displays this help menu
+  "
   exit 0
 }
 
 # Parse options
 while getopts ":f:u:r:b:h" opt; do
   case $opt in
+    h) help_menu;;
     f) FOLDER_NAME="$OPTARG";;
     u) GITHUB_USERNAME="$OPTARG"; git config --global autogit.username "$GITHUB_USERNAME";;
     r) REPO_NAME="$OPTARG";;
     b) BRANCH_NAME="$OPTARG";;
-    h) help_menu;;
     \?) echo "Invalid option: -$OPTARG"; exit 1;;
   esac
 done
-
-# If GITHUB_USERNAME is not set, prompt the user to enter it
-if [ -z "$GITHUB_USERNAME" ]; then
-  echo "Enter your GitHub username: "
-  read GITHUB_USERNAME
-  git config --global autogit.username "$GITHUB_USERNAME"
-fi
+shift $((OPTIND-1))
 
 # Create a new folder if specified
 if [ -n "$FOLDER_NAME" ]; then
@@ -50,11 +44,19 @@ if [ -z "$REPO_NAME" ]; then
   REPO_NAME="${PWD##*/}"
 fi
 
+
 # Create the repository
-echo "# $REPO_NAME" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M "$BRANCH_NAME"
-git remote add origin "git@github.com:$GITHUB_USERNAME/$REPO_NAME.git"
-git push -u origin "$BRANCH_NAME"
+if [ $# -eq 0 ]; then
+  if [ -d ".git" ]; then
+    echo "Error: Current directory is already a Git repository."
+    exit 1
+  fi
+
+  echo "# $REPO_NAME" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M "$BRANCH_NAME"
+  git remote add origin "git@github.com:$GITHUB_USERNAME/$REPO_NAME.git"
+  git push -u origin "$BRANCH_NAME"
+fi
