@@ -1,5 +1,7 @@
 # autoGit
 
+# THIS WORKS BUT HELP MENU AND PERSIStANCE NEED TO BE FIXED
+
 Welcome to autogit, a zsh script which automatically inits and pushes a (mostly) empty GitHub repo. All options are optional. If you just run `autogit` by itself, it will init and push a git repo with the current folder name, and the default branch name, using your set GitHub username
 
 ## Setup
@@ -100,31 +102,3 @@ autogit -u <github_username>
 If you don't specify the `-r` option, the repository name will default to the current folder name.
 
 If you don't specify the `-b` option, the branch name will default to `main`
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
-# autoGit
