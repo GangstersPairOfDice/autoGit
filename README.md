@@ -1,6 +1,6 @@
 # autoGit
 
-Welcome to autogit, a zsh script which automatically inits and pushes a (mostly) empty GitHub repo. All options are optional. If you just run `autogit` by itself, it will init and push a git repo with the current folder name, and the default branch name, using your set GitHub username
+Welcome to autogit, a zsh script which automatically inits and pushes a (mostly) empty GitHub repo. All options are optional. If you just run `ag` by itself, it will init and push a git repo with the current folder name, and the default branch name, using your set GitHub username
 
 ## Setup
 
@@ -15,18 +15,21 @@ git clone https://github.com/GangstersPairOfDice/autoGit.git && cd autoGit
 Run the following command in the terminal to make the script executable:
 
 ```
-chmod +x autogit
+chmod +x ag
 ```
 
-If you get errors make sure you are in the same directory as the `autogit` file.
+If you get errors make sure you are in the same directory as the `ag` file.
 
 ### 3. Update your shell configuration
 
 Add the following line to your shell configuration file (e.g., ~/.zshrc) to update your shell's PATH:
 
 ```
-export PATH=$PATH:$PWD
+echo "export PATH=\$PATH:$(pwd)" >> ~/.zshrc
 ```
+
+(or `echo "export PATH=\$PATH:$(pwd)" >> ~/.bashrc` if you're using ~/.bashrc)
+(NOT TESTED, DIY)
 
 Again, make sure you are in the actual directory where you saved the script.
 
@@ -39,13 +42,14 @@ source ~/.zshrc
 ```
 
 (or `source ~/.bashrc` if you're using Bash)
-(NOT TESTED WITH BASH, DIY)
+(AGAIN, NOT TESTED WITH BASH, DIY)
 
 ### 5. Verify the setup
+
 Open a new terminal window and type:
 
 ```
-autogit -h
+ag -h
 ```
 
 You should see the help message for the autogit script. If you don't see the help message, check that the script is executable and in your system's PATH. That's it You're now ready to use the autogit script to create new Git repositories with ease.
@@ -53,7 +57,7 @@ You should see the help message for the autogit script. If you don't see the hel
 ## Usage
 
 ```
-autogit [options]
+ag [options]
 
   -f <folder_name>: Create a new folder with the specified name and initialize the Git repository inside it.
   -u <github_username>: Set the GitHub username for the remote repository.
@@ -64,29 +68,28 @@ autogit [options]
 
 ## Examples
 
-
 ### Initialize a Git repository in the current folder, using the current folders name as the git repo name.
 
 ```
-autogit
+ag
 ```
 
 ### Creates and pushes a new repo into a newly created folder
 
 ```
-autogit -f newFolder
+ag -f newFolder
 ```
 
 ### Creates and pushes a repo with a custom repo name
 
 ```
-autogit -r myRepo
+ag -r myRepo
 ```
 
 ### Create and push a new repository with a custom branch name
 
 ```
-autogit -b master
+ag -b master
 ```
 
 ## Notes
@@ -94,7 +97,7 @@ autogit -b master
 The first time you run this program, if you don't specify the `-u` option, you will be prompted to enter your GitHub username. Subsequent runs will use this username. You can change at any type by specifying the `-u` option.
 
 ```
-autogit -u <github_username>
+ag -u <github_username>
 ```
 
 If you don't specify the `-r` option, the repository name will default to the current folder name.
