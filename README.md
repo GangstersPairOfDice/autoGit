@@ -55,37 +55,46 @@ You should see the help message for the autogit script. If you don't see the hel
 ```
 autogit [options]
 
-  -f, --folder <folder_name>: Create a new folder with the specified name and initialize the Git repository inside it.
-  -u, --username <github_username>: Set the GitHub username for the remote repository.
-  -r, --repo <repo_name>: Set the name of the Git repository.
-  -b, --branch <branch_name>: Set the initial branch name (default: `main`).
-  -h, --help: Displays this help menu
+  -f <folder_name>: Create a new folder with the specified name and initialize the Git repository inside it.
+  -u <github_username>: Set the GitHub username for the remote repository.
+  -r <repo_name>: Set the name of the Git repository.
+  -b <branch_name>: Set the initial branch name (default: `main`).
+  -h: Displays this help menu
 ```
 
 ## Examples
 
+
+### Initialize a Git repository in the current folder, using the current folders name as the git repo name.
+
+```
+autogit
+```
+
 ### Creates and pushes a new repo into a newly created folder
 
-`autogit -f newFolder`
+```
+autogit -f newFolder
+```
 
 ### Creates and pushes a repo with a custom repo name
 
-`autogit -r myRepo
+```
+autogit -r myRepo
+```
 
 ### Create and push a new repository with a custom branch name
 
+```
 autogit -b master
-
-### Initialize a Git repository in the current folder
-
-autogit
+```
 
 ## Notes
 
 The first time you run this program, if you don't specify the `-u` option, you will be prompted to enter your GitHub username. Subsequent runs will use this username. You can change at any type by specifying the `-u` option.
 
 ```
-autogit -u YourGithubUsername
+autogit -u <github_username>
 ```
 
 If you don't specify the `-r` option, the repository name will default to the current folder name.
