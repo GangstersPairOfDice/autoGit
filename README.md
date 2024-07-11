@@ -25,7 +25,7 @@ If you get errors make sure you are in the same directory as the `autogit` file.
 Add the following line to your shell configuration file (e.g., ~/.zshrc) to update your shell's PATH:
 
 ```
-export PATH="$PATH:$PWD"
+export PATH=$PATH:$PWD
 ```
 
 Again, make sure you are in the actual directory where you saved the script.
