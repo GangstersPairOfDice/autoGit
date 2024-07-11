@@ -55,10 +55,12 @@ You should see the help message for the autogit script. If you don't see the hel
 ```
 autogit [options]
 
-* `-f, --folder <folder_name>`: Create a new folder with the specified name and initialize the Git repository inside it.
-* `-u, --username <github_username>`: Set the GitHub username for the remote repository.
-* `-r, --repo <repo_name>`: Set the name of the Git repository.
-* `-b, --branch <branch_name>`: Set the initial branch name (default: `main`).
+  -f, --folder <folder_name>: Create a new folder with the specified name and initialize the Git repository inside it.
+  -u, --username <github_username>: Set the GitHub username for the remote repository.
+  -r, --repo <repo_name>: Set the name of the Git repository.
+  -b, --branch <branch_name>: Set the initial branch name (default: `main`).
+  -h, --help: Displays this help menu
+```
 
 ## Examples
 
@@ -82,7 +84,9 @@ autogit
 
 The first time you run this program, if you don't specify the `-u` option, you will be prompted to enter your GitHub username. Subsequent runs will use this username. You can change at any type by specifying the `-u` option.
 
-`autogit -u YourGithubUsername`
+```
+autogit -u YourGithubUsername
+```
 
 If you don't specify the `-r` option, the repository name will default to the current folder name.
 
