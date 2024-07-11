@@ -14,7 +14,9 @@ git clone https://github.com/GangstersPairOfDice/autoGit.git && cd autoGit
 
 Run the following command in the terminal to make the script executable:
 
-`chmod +x autogit`
+```
+chmod +x autogit
+```
 
 If you get errors make sure you are in the same directory as the `autogit` file.
 
@@ -22,7 +24,9 @@ If you get errors make sure you are in the same directory as the `autogit` file.
 
 Add the following line to your shell configuration file (e.g., ~/.zshrc) to update your shell's PATH:
 
-`export PATH=$PATH:`
+```
+export PATH=$PATH:
+```
 
 Again, make sure you are in the actual directory where you saved the script.
 
@@ -30,15 +34,19 @@ Again, make sure you are in the actual directory where you saved the script.
 
 Reload your shell configuration by running:
 
-`source ~/.zshrc`
+```
+source ~/.zshrc
+```
 
-(or source ~/.bashrc if you're using Bash)
+(or `source ~/.bashrc` if you're using Bash)
 (NOT TESTED WITH BASH, DIY)
 
 ### 5. Verify the setup
 Open a new terminal window and type:
 
-`autogit -h`
+```
+autogit -h
+```
 
 You should see the help message for the autogit script. If you don't see the help message, check that the script is executable and in your system's PATH. That's it You're now ready to use the autogit script to create new Git repositories with ease.
 
