@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+# Set default values for options
+GITHUB_USERNAME=""
+REPO_NAME=""
+BRANCH_NAME="main"
+FOLDER_NAME=""
+
+# Parse options
+while getopts ":f:u:r:b:" opt; do
+  case $opt in
+    f) FOLDER_NAME="$OPTARG";;
+    u) GITHUB_USERNAME="$OPTARG";;
+    r) REPO_NAME="$OPTARG";;
+    b) BRANCH_NAME="$OPTARG";;
+    \?) echo "Invalid option: -$OPTARG"; exit 1;;
+  esac
+done
+
+# Create a new folder if specified
+if [ -n "$FOLDER_NAME" ]; then
+  mkdir -p "$FOLDER_NAME"
+  cd "$FOLDER_NAME"
+fi
+
+# Set default repo name to current folder name if not specified
+if [ -z "$REPO_NAME" ]; then
+  REPO_NAME="${PWD##*/}"
+fi
+
+# Initialize GitHub username if not specified
+if [ -z "$GITHUB_USERNAME" ]; then
+  echo "Enter your GitHub username: "
+  read GITHUB_USERNAME
+fi
+
+# Create the repository
+echo "# $REPO_NAME" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M "$BRANCH_NAME"
+git remote add origin "git@github.com:$GITHUB_USERNAME/$REPO_NAME.git"
+git push -u origin "$BRANCH_NAME"
