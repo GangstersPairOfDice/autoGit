@@ -4,9 +4,12 @@ zsh script which automatically inits and pushes a (mostly) empty git repo.
 
 ## Setup
 
-### 1. Save the script
+### 1. Clone this repo and enter the repo's directory
 
-Save the `autogit` script to a directory in your system's PATH, such as `~/bin` or `/usr/local/bin` or wherever this folder is.
+```
+git clone https://github.com/GangstersPairOfDice/autoGit.git
+cd autoGit
+```
 
 ### 2. Make the script executable
 
