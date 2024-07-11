@@ -100,3 +100,4 @@ autogit -u <github_username>
 If you don't specify the `-r` option, the repository name will default to the current folder name.
 
 If you don't specify the `-b` option, the branch name will default to `main`
+# autoGit
