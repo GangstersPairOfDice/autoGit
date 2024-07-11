@@ -23,7 +23,7 @@ Welcome to autogit. This script automatically inits and pushes a GitHub repo. Al
 # Parse options
 while getopts ":f:u:r:b:h" opt; do
   case $opt in
-    h) help_menu;;
+    h) help_menu; exit 0;;
     f) FOLDER_NAME="$OPTARG";;
     u) GITHUB_USERNAME="$OPTARG"; git config --global autogit.username "$GITHUB_USERNAME";;
     r) REPO_NAME="$OPTARG";;
@@ -32,6 +32,11 @@ while getopts ":f:u:r:b:h" opt; do
   esac
 done
 shift $((OPTIND-1))
+
+# If no arguments are left, exit
+if [ $# -eq 0 ]; then
+  exit 0
+fi
 
 # Create a new folder if specified
 if [ -n "$FOLDER_NAME" ]; then
