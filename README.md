@@ -6,7 +6,9 @@ zsh script which automatically inits and pushes a (mostly) empty git repo.
 
 ### 1. Clone this repo and enter the repo's directory
 
-`git clone https://github.com/GangstersPairOfDice/autoGit.git && cd autoGit`
+```
+git clone https://github.com/GangstersPairOfDice/autoGit.git && cd autoGit
+```
 
 ### 2. Make the script executable
 
